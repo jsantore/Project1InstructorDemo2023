@@ -16,28 +16,27 @@ def close_db(connection: sqlite3.Connection):
 
 
 def create_entries_table(cursor: sqlite3.Cursor):
-    create_statement = """CREATE TABLE IF NOT EXISTS WuFooData( 
-		entryID INTEGER PRIMARY KEY,
-		prefix TEXT NOT NULL,
-		first_name TEXT NOT NULL,
-		last_name TEXT NOT NULL,
-		title TEXT,
-		org TEXT,
-		email TEXT,
-		website TEXT,
-		course_project BOOLEAN,
-		guest_speaker BOOLEAN,
-	    site_visit BOOLEAN,
-		job_shadow BOOLEAN,
-		internship BOOLEAN,
-		career_panel BOOLEAN,
-		networking_event BOOLEAN,
-		subject_area TEXT NOT NULL,
-		description TEXT,
-		funding BOOLEAN,
-		created_date TEXT,
-		created_by TEXT
-		);"""
+    create_statement = """CREATE TABLE IF NOT EXISTS WuFooData(
+    entryID INTEGER PRIMARY KEY,
+    prefix TEXT NOT NULL,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    title TEXT,
+    org TEXT,
+    email TEXT,
+    website TEXT,
+    course_project BOOLEAN,
+    guest_speaker BOOLEAN,
+    site_visit BOOLEAN,
+    job_shadow BOOLEAN,
+    internship BOOLEAN,
+    career_panel BOOLEAN,
+    networking_event BOOLEAN,
+    subject_area TEXT NOT NULL,
+    description TEXT,
+    funding BOOLEAN,
+    created_date TEXT,
+    created_by TEXT);"""
     cursor.execute(create_statement)
 
 
