@@ -4,6 +4,7 @@ import getData
 
 db_name = "cubesProject.sqlite"
 
+
 def main():
     json_response = getData.get_wufoo_data()
     entries_list = json_response["Entries"]

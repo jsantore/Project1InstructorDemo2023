@@ -7,10 +7,14 @@ import sqlite3
 def does_table_exists() -> bool:
     conn = sqlite3.connect(db_name)
     cursor = conn.cursor()
-    cursor.execute('''
+    cursor.execute(
+        """
     SELECT count(*) FROM sqlite_master WHERE type='table' AND name='wufoo_data'
-    ''')
-    return cursor.fetchone()[0]  # in python zero==False, and any positive number == True
+    """
+    )
+    return cursor.fetchone()[
+        0
+    ]  # in python zero==False, and any positive number == True
 
 
 class CubesDB:
@@ -28,4 +32,3 @@ class CubesDB:
     def __exit__(self, exc_type, exc_value, exc_traceback):
         self.conn.commit()
         self.conn.close()
-
