@@ -1,4 +1,4 @@
-from main import db_name, main
+from main import db_name, sprint2
 import sqlite3
 
 
@@ -21,7 +21,7 @@ class CubesDB:
     def __init__(self, file=db_name):
         self.db_file = file
         if not does_table_exists():
-            main()
+            sprint2()
 
     def __enter__(self):
         self.conn = sqlite3.connect(self.db_file)
