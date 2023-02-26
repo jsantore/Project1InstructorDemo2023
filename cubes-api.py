@@ -33,9 +33,7 @@ def prepare_result(data):
                 "org": entry[5],
                 "email": entry[6],
                 "website": entry[7],
-                "course_project": True
-                if len(entry[8]) > 0
-                else False,  # inline if to assign true if the string was not ''
+                "course_project": True if len(entry[8]) > 0 else False,  # inline if:assign true if string was not ''
                 "guest_speaker": True if len(entry[9]) > 0 else False,
                 "site_visit": True if len(entry[10]) > 0 else False,
                 "job_shadow": True if len(entry[11]) > 0 else False,
