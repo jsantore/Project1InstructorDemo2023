@@ -33,6 +33,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        pip uninstall opencv-python
+        pip install opencv-python-headless
         sudo apt update && sudo apt install --yes libgl1-mesa-dev libxkbcommon-x11-0 xvfb
     - name: Lint with flake8
       run: |
@@ -49,4 +51,3 @@ jobs:
         exec Xvfb $disp -screen $screen $geom 2>/tmp/Xvfb.log &
         export DISPLAY=:8
         python -m pytest -s tests/*.py
-        tail -n 1000 /tmp/Xvfb.log
