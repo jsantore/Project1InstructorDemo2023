@@ -9,26 +9,26 @@ class WuFooEntriesWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.data = self.get_data(data_url)
-        self.list_control = None
-        self.setup_window()
+        self.list_control:QListWidget = None
         self.data_window = None
-        self.prefix_box = None
-        self.fname_box = None
-        self.lname_box = None
-        self.title_box = None
-        self.org_box = None
-        self.email_box = None
-        self.website_box = None
-        self.project_check = None
-        self.speaker_check = None
-        self.visit_check = None
-        self.shadow_check = None
-        self.internship_check = None
-        self.panel_check = None
-        self.network_even_check = None
-        self.subject = None
-        self.description_box = None
-        self.funding = None
+        self.prefix_box:QLineEdit = None
+        self.fname_box:QLineEdit = None
+        self.lname_box:QLineEdit = None
+        self.title_box:QLineEdit = None
+        self.org_box:QLineEdit = None
+        self.email_box:QLineEdit = None
+        self.website_box:QLineEdit = None
+        self.project_check:QCheckBox = None
+        self.speaker_check:QCheckBox = None
+        self.visit_check:QCheckBox = None
+        self.shadow_check:QCheckBox = None
+        self.internship_check:QCheckBox = None
+        self.panel_check:QCheckBox = None
+        self.network_even_check:QCheckBox = None
+        self.subject:QLineEdit = None
+        self.description_box:QPlainTextEdit = None
+        self.funding:QLineEdit = None
+        self.setup_window()
 
     def setup_window(self):
         self.setWindowTitle("GUI Demo for Capstone")
@@ -37,23 +37,19 @@ class WuFooEntriesWindow(QWidget):
         left_pane = QVBoxLayout()
         main_layout.addLayout(left_pane)
         left_pane.addWidget(self.list_control)
-        #list_size = QSizePolicy()
-        #list_size.setVerticalStretch(4)
-        #self.list_control.setSizePolicy(list_size)
+        right_pane = self.build_right_pane()
         self.list_control.resize(400, 400)
+        self.list_control.currentItemChanged.connect(self.wufoo_entry_selected)
         self.put_data_in_list(self.data)
         quit_button  = QPushButton("Quit")
         quit_button.clicked.connect(QApplication.instance().quit)
         left_pane.addWidget(quit_button)
-        right_pane = self.build_right_pane()
         main_layout.addLayout(right_pane)
         self.setLayout(main_layout)
         self.show()
 
 
     def build_right_pane(self)->QLayout:
-
-
         right_pane = QVBoxLayout()
         one_liners_pane = QGridLayout()
         right_pane.addLayout(one_liners_pane)
@@ -122,4 +118,27 @@ class WuFooEntriesWindow(QWidget):
         for item in data_to_add:
             display_text = f"{item['first_name']}  {item['last_name']} : {item['org']}"
             list_item = QListWidgetItem(display_text, listview=self.list_control)
+            list_item.setData(1,item) #lets put the dictionary for later use
+
+    def wufoo_entry_selected(self,current:QListWidgetItem, previous:QListWidgetItem):
+        selected_data = current.data(1)  # we put the full record in data role 1
+        self.prefix_box.setText(selected_data['prefix'])
+        self.fname_box.setText(selected_data['first_name'])
+        self.lname_box.setText(selected_data['last_name'])
+        self.title_box.setText(selected_data["title"])
+        self.org_box.setText(selected_data["org"])
+        self.email_box.setText(selected_data["email"])
+        self.website_box.setText(selected_data["website"])
+        self.project_check.setChecked(selected_data["course_project"])
+        self.speaker_check.setChecked(selected_data["guest_speaker"])
+        self.visit_check.setChecked(selected_data["site_visit"])
+        self.shadow_check.setChecked(selected_data["job_shadow"])
+        self.internship_check.setChecked(selected_data["internship"])
+        self.panel_check.setChecked(selected_data["career_panel"])
+        self.network_even_check.setChecked(selected_data["networking_event"])
+        self.subject.setText(selected_data["subject_area"])
+        self.description_box.setPlainText(selected_data["description"])
+        self.funding.setText(selected_data["funding"])
+
+        
 
