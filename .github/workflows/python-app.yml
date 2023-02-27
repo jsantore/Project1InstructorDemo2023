@@ -30,12 +30,12 @@ jobs:
         echo 'wufoo_key = "'$API_KEY'"' >> secrets.py
     - name: Install dependencies
       run: |
+        sudo apt update && sudo apt install --yes libgl1-mesa-dev libxkbcommon-x11-0 xvfb libxcb-xinerama0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         pip uninstall opencv-python
         pip install opencv-python-headless
-        sudo apt update && sudo apt install --yes libgl1-mesa-dev libxkbcommon-x11-0 xvfb
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
