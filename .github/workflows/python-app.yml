@@ -43,6 +43,9 @@ jobs:
     - name: Test with pytest
       run: |
         uvicorn cubes-api:app --reload &
-        /usr/bin/Xvfb :99 -screen 0 1920x1080x24+32 &
-        export DISPLAY=:99
+        disp=:8
+        screen=0
+        geom=640x480x24
+        exec Xvfb $disp -screen $screen $geom 2>/tmp/Xvfb.log &
+        export DISPLAY=:8
         python -m pytest tests/*.py
