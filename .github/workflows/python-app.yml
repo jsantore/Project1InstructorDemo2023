@@ -42,6 +42,7 @@ jobs:
         flake8 . --count --max-complexity=10 --max-line-length=154 --statistics
     - name: Test with pytest
       uses: GabrielBB/xvfb-action@v1
-      run: |
-       uvicorn cubes-api:app --reload &
-       python -m pytest tests/*.py
+      with:
+        run: |
+          uvicorn cubes-api:app --reload &
+          python -m pytest tests/*.py
