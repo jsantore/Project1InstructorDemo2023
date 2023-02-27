@@ -42,7 +42,8 @@ def test_data_inserted():
         "Field16": "",
         "Field17": "",
         "Field113": "Philosophy",
-        "Field112": "Create an situation where you and your husband work for arch-rivals AMD and intel so you can't ever talk about work at home between the two of you, but on the other hand, you don't have to worry about both of you being laid off at the same time.",
+        "Field112": "Create an situation where you and your husband work for arch-rivals AMD and intel so you can't ever talk about work at home between "
+                    "the two of you, but on the other hand, you don't have to worry about both of you being laid off at the same time.",
         "Field115": "Yes",
         "DateCreated": "2023-02-10 08:15:49",
         "CreatedBy": "public",
