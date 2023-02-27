@@ -9,7 +9,7 @@ def does_table_exists() -> bool:
     cursor = conn.cursor()
     cursor.execute(
         """
-    SELECT count(*) FROM sqlite_master WHERE type='table' AND name='wufoo_data'
+    SELECT count(*) FROM sqlite_master WHERE type='table' AND name='WuFooData'
     """
     )
     return cursor.fetchone()[
