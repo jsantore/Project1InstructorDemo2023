@@ -42,7 +42,7 @@ jobs:
         flake8 . --count --max-complexity=10 --max-line-length=154 --statistics
     - name: Test with pytest
       run: |
-        uvicorn cubes-api:app --reload 
+        uvicorn cubes-api:app --reload &
         /usr/bin/Xvfb :99 -screen 0 1920x1080x24+32 &
         export DISPLAY=:99
         python -m pytest tests/*.py
