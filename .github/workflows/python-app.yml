@@ -48,4 +48,5 @@ jobs:
         geom=640x480x24
         exec Xvfb $disp -screen $screen $geom 2>/tmp/Xvfb.log &
         export DISPLAY=:8
-        python -m pytest tests/*.py
+        python -m pytest -s tests/*.py
+        tail -n 1000 /tmp/Xvfb.log
