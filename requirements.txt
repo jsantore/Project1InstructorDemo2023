@@ -4,3 +4,4 @@ uvicorn
 pydantic
 pathlib
 pyside6
+pytest-qt

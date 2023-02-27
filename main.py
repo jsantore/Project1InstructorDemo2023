@@ -26,11 +26,13 @@ def sprint3():
     my_window.setWindowTitle("Instructor Demo Comp490 2023")
     sys.exit(qt_app.exec())
 
+
 def show_options():
     print("=======================================")
     print("[1] Update the database with wufoo data")
     print("[2] Run the Graphical Program")
     print("=======================================")
+
 
 def main():
     show_options()
@@ -41,7 +43,7 @@ def main():
         sprint3()
     else:
         print("Invalid Entry, ending program...")
-        sys.exit(0) # exit successfully
+        sys.exit(0)  # exit successfully
 
 
 if __name__ == "__main__":

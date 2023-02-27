@@ -3,9 +3,7 @@ from typing import Tuple
 
 
 def open_db(filename: str) -> Tuple[sqlite3.Connection, sqlite3.Cursor]:
-    db_connection = sqlite3.connect(
-        filename
-    )  # connect to existing DB or create new one
+    db_connection = sqlite3.connect(filename)  # connect to existing DB or create new one
     cursor = db_connection.cursor()  # get ready to read/write data
     return db_connection, cursor
 
@@ -46,11 +44,7 @@ def add_entries_to_db(cursor: sqlite3.Cursor, entries_data: list[dict]):
     course_project, guest_speaker, site_visit, job_shadow, internship, career_panel, networking_event,
     subject_area, description, funding, created_date, created_by) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"""
     for entry in entries_data:
-        entry_values = list(
-            entry.values()
-        )  # get the list of values from the dictionary
-        entry_values[0] = int(
-            entry_values[0]
-        )  # the EntryID is a string, but I want it to be a number
+        entry_values = list(entry.values())  # get the list of values from the dictionary
+        entry_values[0] = int(entry_values[0])  # the EntryID is a string, but I want it to be a number
         entry_values = entry_values[:-2]
         cursor.execute(insertStatement, entry_values)

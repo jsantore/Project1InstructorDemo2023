@@ -12,9 +12,7 @@ def does_table_exists() -> bool:
     SELECT count(*) FROM sqlite_master WHERE type='table' AND name='WuFooData'
     """
     )
-    return cursor.fetchone()[
-        0
-    ]  # in python zero==False, and any positive number == True
+    return cursor.fetchone()[0]  # in python zero==False, and any positive number == True
 
 
 class CubesDB:

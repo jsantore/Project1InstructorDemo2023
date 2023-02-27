@@ -11,9 +11,7 @@ from serverDB import CubesDB
 
 def api_reply(data):
     if not data:
-        return JSONResponse(
-            {"message": "No Cubes Data Found"}, status_code=HTTP_404_NOT_FOUND
-        )
+        return JSONResponse({"message": "No Cubes Data Found"}, status_code=HTTP_404_NOT_FOUND)
     result = prepare_result(data)
     return JSONResponse(result, status_code=HTTP_200_OK)
 
@@ -33,7 +31,9 @@ def prepare_result(data):
                 "org": entry[5],
                 "email": entry[6],
                 "website": entry[7],
-                "course_project": True if len(entry[8]) > 0 else False,  # inline if:assign true if string was not ''
+                "course_project": True
+                if len(entry[8]) > 0
+                else False,  # inline if:assign true if string was not ''
                 "guest_speaker": True if len(entry[9]) > 0 else False,
                 "site_visit": True if len(entry[10]) > 0 else False,
                 "job_shadow": True if len(entry[11]) > 0 else False,
