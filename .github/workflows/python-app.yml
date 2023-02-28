@@ -42,9 +42,11 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --max-complexity=10 --max-line-length=154 --statistics
+    - name: Run Fast API
+      run: |
+        uvicorn cubes-api:app --reload
     - name: Test with pytest
       run: |
-        uvicorn cubes-api:app --reload &
         disp=:8
         screen=0
         geom=640x480x24
