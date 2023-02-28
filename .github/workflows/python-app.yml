@@ -44,7 +44,7 @@ jobs:
         flake8 . --count --max-complexity=10 --max-line-length=154 --statistics
     - name: Run Fast API
       run: |
-        uvicorn cubes-api:app --reload
+        uvicorn cubes-api:app &
     - name: Test with pytest
       run: |
         disp=:8
