@@ -19,7 +19,7 @@ from PySide6.QtWidgets import (
 )
 
 data_url = " http://127.0.0.1:8000"  # you can put yours in your secrets file so that people don't hit your server to test their programs
-
+# add comment to test workflow
 
 class WuFooEntriesWindow(QWidget):
     def __init__(self):
